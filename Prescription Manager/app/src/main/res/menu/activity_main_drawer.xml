@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_password_be"
+                android:title="Create an Account" />
+        </menu>
+    </item>
+
+    <item android:title="Prescription Storage">
+        <menu>
+            <item
+                android:id="@+id/nav_internal_annotation"
+                android:title="Store/Retrieve data" />
+        </menu>
+    </item>
+
+    <item android:title="User Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_acl_user"
+                android:title="Create/Delete User" />
+
+            <item
+                android:id="@+id/nav_acl_privilege"
+                android:title="Create a Role" />
+        </menu>
+    </item>
+
+</menu>

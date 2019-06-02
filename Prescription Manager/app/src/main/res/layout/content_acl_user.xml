@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="edu.uw.medhas.mhealthsecurityframework.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Another User"
+            android:textSize="26dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/aclUserNewUser"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="New User id"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/aclUserCurrentUser"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Current User id"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/aclUserCreate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Create User"
+            android:layout_marginBottom="60dp" />
+
+        <Button
+            android:id="@+id/aclUserDelete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete User"
+            android:layout_marginBottom="60dp" />
+
+        <TextView
+            android:id="@+id/aclUserOp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+</LinearLayout>
