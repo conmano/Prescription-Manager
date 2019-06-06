@@ -25,42 +25,26 @@ import java.security.cert.CertificateException;
 import edu.uw.medhas.mhealthsecurityframework.acl.db.DbError;
 import edu.uw.medhas.mhealthsecurityframework.acl.db.ResultHandler;
 import edu.uw.medhas.mhealthsecurityframework.acl.model.AuthContext;
-import edu.uw.medhas.mhealthsecurityframework.acl.model.Privilege;
 import edu.uw.medhas.mhealthsecurityframework.acl.model.Role;
 import edu.uw.medhas.mhealthsecurityframework.acl.model.User;
-import edu.uw.medhas.mhealthsecurityframework.acl.model.UserRole;
-import edu.uw.medhas.mhealthsecurityframework.acl.service.PrivilegeService;
 import edu.uw.medhas.mhealthsecurityframework.acl.service.RoleService;
 import edu.uw.medhas.mhealthsecurityframework.acl.service.UserService;
 import edu.uw.medhas.mhealthsecurityframework.activity.SecureActivity;
 import edu.uw.medhas.mhealthsecurityframework.model.SecureAnnotatedModel;
-import edu.uw.medhas.mhealthsecurityframework.model.SecureSerializableModel;
 import edu.uw.medhas.mhealthsecurityframework.model.secureDatabaseModel.entity.SecureDatabase;
-import edu.uw.medhas.mhealthsecurityframework.model.secureDatabaseModel.entity.SensitiveDbData;
 import edu.uw.medhas.mhealthsecurityframework.password.PasswordUtils;
 import edu.uw.medhas.mhealthsecurityframework.password.exception.PasswordNoLowerCaseCharacterException;
 import edu.uw.medhas.mhealthsecurityframework.password.exception.PasswordNoNumberCharacterException;
 import edu.uw.medhas.mhealthsecurityframework.password.exception.PasswordNoSpecialCharacterException;
 import edu.uw.medhas.mhealthsecurityframework.password.exception.PasswordNoUpperCaseCharacterException;
 import edu.uw.medhas.mhealthsecurityframework.password.exception.PasswordTooShortException;
-import edu.uw.medhas.mhealthsecurityframework.storage.database.model.SecureDouble;
-import edu.uw.medhas.mhealthsecurityframework.storage.database.model.SecureFloat;
-import edu.uw.medhas.mhealthsecurityframework.storage.database.model.SecureInteger;
-import edu.uw.medhas.mhealthsecurityframework.storage.database.model.SecureLong;
-import edu.uw.medhas.mhealthsecurityframework.storage.database.model.SecureString;
-import edu.uw.medhas.mhealthsecurityframework.storage.exception.ReauthenticationException;
 import edu.uw.medhas.mhealthsecurityframework.storage.metadata.StorageReadObject;
 import edu.uw.medhas.mhealthsecurityframework.storage.metadata.StorageWriteObject;
 import edu.uw.medhas.mhealthsecurityframework.storage.result.StorageResult;
 import edu.uw.medhas.mhealthsecurityframework.storage.result.StorageResultCallback;
 import edu.uw.medhas.mhealthsecurityframework.storage.result.StorageResultErrorType;
 import edu.uw.medhas.mhealthsecurityframework.storage.result.StorageResultSuccess;
-import edu.uw.medhas.mhealthsecurityframework.web.model.Request;
-import edu.uw.medhas.mhealthsecurityframework.web.model.RequestMethod;
-import edu.uw.medhas.mhealthsecurityframework.web.model.Response;
-import edu.uw.medhas.mhealthsecurityframework.web.model.WebError;
-import edu.uw.medhas.mhealthsecurityframework.web.model.ResponseHandler;
-import edu.uw.medhas.mhealthsecurityframework.webclient.TestWebClient;
+
 
 
 //This is the beginning of main
