@@ -64,9 +64,13 @@ public class MainActivity extends SecureActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Sets the layout to main and initializes the toolbar
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //initializes the drawer.
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,8 +78,12 @@ public class MainActivity extends SecureActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        //Sets the navigation bar up
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //sets up the secure database
 
         mSecureDatabase = App.get().getDb();
 
@@ -157,6 +165,7 @@ public class MainActivity extends SecureActivity
             final EditText editTextUs2 = (EditText) findViewById(R.id.userAuth);
             final UserService userService = getAclServiceFactory().getUserService();
 
+            //If button to create account is selected
 
             btnValidatePassword.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -189,6 +198,8 @@ public class MainActivity extends SecureActivity
                     final User user = new User();
                     user.setId(editTextUs.getText().toString());
                     user.setName(user.getId() + "-name");
+
+                    //Gets authentication on admin user provided.
 
                     final AuthContext context = new AuthContext(editTextUs2.getText().toString());
 
@@ -227,8 +238,12 @@ public class MainActivity extends SecureActivity
                     final SecureAnnotatedModel sam = new SecureAnnotatedModel();
                     sam.setData(editTextInp.getText().toString());
 
+                    //Gets annotated model and the text file that you want to store to
+
                     final StorageWriteObject<SecureAnnotatedModel> writeObject =
                             new StorageWriteObject<>("internalstorage-annotation.txt", sam);
+
+                    //Attempts to store file and returns with three different outcomes
 
                     getSecureInternalFileHandler().writeData(writeObject,
                             new StorageResultCallback<StorageResultSuccess>() {
@@ -257,9 +272,14 @@ public class MainActivity extends SecureActivity
                 @Override
                 public void onClick(View v) {
                     editTextOp.setText("");
+
+                    //Gets annotated model and the text file that you want to read from
+
                     final StorageReadObject<SecureAnnotatedModel> readObject =
                             new StorageReadObject<>("internalstorage-annotation.txt",
                                     SecureAnnotatedModel.class);
+
+                    //Attempts to read file and returns with one of three different outcomes.
 
                     getSecureInternalFileHandler().readData(readObject,
                             new StorageResultCallback<SecureAnnotatedModel>() {
@@ -281,7 +301,8 @@ public class MainActivity extends SecureActivity
                 }
             });
 
-            //Allows the creation of new users
+
+            //Allows the creation of new users without adding a password to check
 
         } else if (id == R.id.nav_acl_user) {
             final EditText editTextNewUser = (EditText) findViewById(R.id.aclUserNewUser);
@@ -302,6 +323,8 @@ public class MainActivity extends SecureActivity
                     final User user = new User();
                     user.setId(editTextNewUser.getText().toString());
                     user.setName(user.getId() + "-name");
+
+                    //Gets credentials of admin user inputted.
 
                     final AuthContext context = new AuthContext(editTextCurrentUser.getText().toString());
 
@@ -327,6 +350,9 @@ public class MainActivity extends SecureActivity
                 public void onClick(View v) {
                     editTextOp.setText("");
                     final String userId = editTextNewUser.getText().toString();
+
+                    //Gets credentials of admin user inputted.
+
                     final AuthContext context = new AuthContext(editTextCurrentUser.getText().toString());
 
                     userService.deleteUser(userId, context, new ResultHandler<Void>() {
@@ -353,7 +379,7 @@ public class MainActivity extends SecureActivity
 
             final RoleService roleService = getAclServiceFactory().getRoleService();
 
-            //Gives new role to user
+            //Creates new roles.
 
             btnCreate.setOnClickListener(new View.OnClickListener() {
 
@@ -363,6 +389,7 @@ public class MainActivity extends SecureActivity
                     final Role role = new Role();
                     role.setName(editTextNewRole.getText().toString());
 
+                    //Gets credentials of admin user inputted.
                     final AuthContext context = new AuthContext(editTextCurrentUser.getText().toString());
 
                     roleService.createRole(role, context, new ResultHandler<Role>() {
@@ -379,6 +406,8 @@ public class MainActivity extends SecureActivity
                 }
             });
         }
+
+        //Allows drawer to be closed.
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
